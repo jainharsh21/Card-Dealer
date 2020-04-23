@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Card from "./Card";
 
 const API_BASE_URL = "https://deckofcardsapi.com/api/deck";
 
 class Deck extends Component {
   constructor(props) {
     super(props);
-    this.state = { deck: null };
+    this.state = { deck: null, drawn: [] };
     this.dealCard = this.dealCard.bind(this);
   }
   async componentDidMount() {
     let deck = await axios.get(`${API_BASE_URL}/new/shuffle/`);
-    this.setState({ deck: deck.data, drawn: [] });
+    this.setState({ deck: deck.data });
   }
 
   async dealCard() {
@@ -38,10 +39,14 @@ class Deck extends Component {
   }
 
   render() {
+    const cards = this.state.drawn.map((c) => (
+      <Card key={c.id} name={c.name} image={c.image} />
+    ));
     return (
       <div>
         <h1>Card Dealer</h1>
         <button onClick={this.dealCard}>Deal Card</button>
+        {cards}
       </div>
     );
   }
