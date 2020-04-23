@@ -1,3 +1,25 @@
 .Deck-cardarea {
   margin-top: 80px;
 }
+
+.Deck-title {
+  color: azure;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 27 px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+.Deck-btn {
+  background: none;
+  outline: none;
+  border: 2px solid;
+  font: inherit;
+  margin: 0.5em;
+  padding: 1em 2em;
+  color: teal;
+}
